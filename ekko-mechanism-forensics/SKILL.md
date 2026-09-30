@@ -22,10 +22,10 @@ metadata:
 
 1. **本地源码与文档**（最快、离线可靠）：`ekko-agent` 包内 `docs/` 目录是官方文档来源，先查再答。
    ```bash
-   find <ekko_skills_dir> -name '*.md' | xargs grep -l "<关键词>" | head
+   find <Ekko 数据目录> -name '*.md' | xargs grep -l "<关键词>" | head
    ```
-2. **结构化记忆库**（验证实际数据）：`memory_search` 确认该机制在真实操作里的表现。
-3. **宿主 API 文档**（补充理解）：用 `ekko_studio_api_openapi_get` 查端点行为；单篇文档用 `ekko_studio_api_request` 读，失败就跳。
+2. **结构化记忆库**（验证实际数据）：记忆查询工具 确认该机制在真实操作里的表现。
+3. **宿主 API 文档**（补充理解）：用 宿主 API 查询工具 查端点行为；单篇文档用 宿主 API 请求工具 读，失败就跳。
 
 ## 常见误判点
 

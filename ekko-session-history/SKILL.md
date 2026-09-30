@@ -19,16 +19,16 @@ metadata:
 
 ## 主题检索（用户没给 ID、按话题描述找）
 
-1. 用 Ekko Studio 的 session 管理工具（`ekko_studio_use_toolset` 里查 session 相关操作）按关键词查——优先于直接读 state.db。
+1. 用 Ekko Studio 的 session 管理工具（用本机 session 管理工具查 session 相关操作）按关键词查——优先于直接读 state.db。
 2. 复合主题拆 2-3 个同义查询各跑一遍（如"记忆 技能" + "记忆文件 规范"），取并集。
 3. 给结果时把命中的会话写成会话 ID 链接（verbatim，句中内联），附会话标题与时间，让用户对认；命中不止一个时全部列出，按时间排。
 
 ## 步骤
 
-1. **Ekko 工具优先**（经 `ekko_studio_use_toolset` 查操作）：
+1. **Ekko 工具优先**（经本机 session 管理工具查操作）：
    - 查单个会话整读；`@session:<profile>/<id>` 按 `/` 拆成 profile + id，带 profile 传参。
    - 返回 "session not found" 时先核全存储再下结论：查是否有多个 profile，有则换 profile 重试；只有 default 时进入下一步。
-2. **state.db 兜底**（`~/.ekko/state.db` 或等价的 Ekko 存储路径）：
+2. **state.db 兜底**（`<Ekko 数据目录>/state.db` 或等价的 Ekko 存储）：
    - 命中后读正文。
    - sessions 表**没有** `last_active` 和 `profile` 列，查了直接报列不存在。
 3. **缺失判定**（全部查完才能说"不存在"）：
